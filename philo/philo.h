@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:05:25 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/13 22:08:37 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/16 22:39:45 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,5 +60,19 @@ typedef struct s_philo
 	pthread_mutex_t	*left_fork;
 	t_data			*data;
 }					t_philo;
+
+// validate
+int		validate(int argc, char **argv);
+
+// init_data
+int		init_data(t_data *data, int argc, char **argv);
+
+// utils
+int		ft_atoi(const char *str);
+int		error_free(char *msg, t_data *data);
+int		error_msg(char *s);
+void	*free_data(t_data *data);
+int		destroy_all(t_data *data);
+
 
 #endif
