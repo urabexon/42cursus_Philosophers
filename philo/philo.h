@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:05:25 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/18 20:10:52 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/18 20:43:04 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,14 @@ int		init_data(t_data *data, int argc, char **argv);
 
 // monitor
 void	monitor(t_data *data);
+
+// main_philo
+
+// check
+bool	everyone_is_alive(t_data *data);
+bool	everyone_is_full(t_data *data);
+bool	check_anyone_dead(t_data *data, int i);
+bool	check_finish(t_data *data);
 
 // time
 void	start_delay(time_t start_time);
