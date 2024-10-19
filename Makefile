@@ -6,14 +6,14 @@
 #    By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/10/13 20:46:35 by hurabe            #+#    #+#              #
-#    Updated: 2024/10/14 22:18:04 by hurabe           ###   ########.fr        #
+#    Updated: 2024/10/19 22:52:49 by hurabe           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	philo
 
 SRCS	=	philo/main.c philo/validate.c philo/init.c philo/monitor.c philo/routine.c \
-			philo/routine_helper.c philo/check.c philo/time.c philo/utils.c
+			philo/routine_utils.c philo/check.c philo/time.c philo/utils.c
 
 CC		=	cc
 CFLAGS	=	-Wall -Wextra -Werror
