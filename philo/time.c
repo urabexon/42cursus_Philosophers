@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:02:02 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/17 23:20:34 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 18:12:31 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ time_t	get_current_time(void)
 	return (milliseconds);
 }
 
-int	my_sleep(size_t milliseconds)
+int	ft_usleep(size_t milliseconds)
 {
 	size_t	start;
 

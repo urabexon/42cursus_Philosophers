@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:05:25 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/19 22:53:23 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 18:12:27 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ void	return_forks(t_philo *philo);
 // time
 void	start_delay(time_t start_time);
 time_t	get_current_time(void);
-int		my_sleep(size_t milliseconds);
+int		ft_usleep(size_t milliseconds);
 
 // utils
 int		ft_atoi(const char *str);
