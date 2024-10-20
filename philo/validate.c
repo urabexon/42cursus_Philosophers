@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:02:06 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/16 22:08:55 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:33:40 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,25 +31,25 @@ static int	is_number(char *str)
 
 int	validate(int argc, char **argv)
 {
-	int	err_flg;
+	int	err_flag;
 
-	err_flg = 0;
+	err_flag = 0;
 	if (argc != 5 && argc != 6)
-		err_flg = error_msg("Invalid argument\n");
+		err_flag = error_msg("Invalid argument\n");
 	else
 	{
 		if (!is_number(argv[1]) || ft_atoi(argv[1]) <= 0)
-			err_flg = error_msg("Invalid philosophers number\n");
+			err_flag = error_msg("Invalid philosophers number\n");
 		if (!is_number(argv[2]) || ft_atoi(argv[2]) < 0)
-			err_flg = error_msg("Invalid time to die\n");
+			err_flag = error_msg("Invalid time to die\n");
 		if (!is_number(argv[3]) || ft_atoi(argv[3]) < 0)
-			err_flg = error_msg("Invalid time to eat\n");
+			err_flag = error_msg("Invalid time to eat\n");
 		if (!is_number(argv[4]) || ft_atoi(argv[4]) < 0)
-			err_flg = error_msg("Invalid time to sleep\n");
-		if (argc == 6 && (!is_number(argv[5]) || ft_atoi(argv[5]) <= 0))
-			err_flg = error_msg("Invalid number of times to eat\n");
+			err_flag = error_msg("Invalid time to sleep\n");
+		if (argc == 6 && (!is_number(argv[5]) || ft_atoi(argv[5]) < 0))
+			err_flag = error_msg("Invalid number of times to eat\n");
 	}
-	if (err_flg)
+	if (err_flag)
 		return (0);
 	return (1);
 }

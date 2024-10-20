@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:01:43 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/18 20:40:38 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:11:52 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 bool	everyone_is_alive(t_data *data)
 {
-	pthread_mutex_lock(&data->dead);
+	pthread_mutex_lock(&data->dead_lock);
 	if (data->dead == true)
 	{
 		pthread_mutex_unlock(&data->dead_lock);

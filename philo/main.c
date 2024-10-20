@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:01:49 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/19 23:10:20 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:37:31 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	philosophers(t_data *data)
 	i = 0;
 	while (i < data->philos_num)
 	{
-		if (pthread_create(&data->philos[i].philo, NULL, &routine, \
-			&data->philos[i]) != 0)
+		if (pthread_create(&data->philos[i].philo, NULL, &routine,
+				&data->philos[i]) != 0)
 		{
 			while (--i >= 0)
 				pthread_detach(data->philos[i].philo);
@@ -49,5 +49,6 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	philosophers(&data);
 	destroy_all(&data);
+	free_data(&data);
 	return (EXIT_SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:01:46 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/17 22:36:23 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:36:39 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	init_philos(t_data *data)
 		data->philos[i].eat_count = 0;
 		data->philos[i].last_eat = data->start_time;
 		data->philos[i].data = data;
-		data->philos[i].left_fork = &data->forks[0];
+		data->philos[i].left_fork = &data->forks[i];
 		if (i == data->philos_num - 1)
 			data->philos[i].right_fork = &data->forks[0];
 		else
@@ -39,7 +39,7 @@ static int	init_philos(t_data *data)
 	return (0);
 }
 
-static int	init_mutex(t_data *data)
+static int	init_mutexes(t_data *data)
 {
 	if (pthread_mutex_init(&data->eat_lock, NULL) != 0)
 		return (error_msg("pthread_mutex_init error\n"));
@@ -57,13 +57,13 @@ static int	init_mutex(t_data *data)
 	return (0);
 }
 
-static int	allcate_data(t_data *data)
+static int	allocate_data(t_data *data)
 {
 	data->philos = (t_philo *)malloc(sizeof(t_philo) * data->philos_num);
 	if (data->philos == NULL)
 		return (error_msg("malloc error\n"));
-	data->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t) \
-					* data->philos_num);
+	data->forks = (pthread_mutex_t *)malloc(sizeof(pthread_mutex_t)
+			* data->philos_num);
 	if (data->forks == NULL)
 	{
 		free(data->philos);
@@ -84,9 +84,9 @@ int	init_data(t_data *data, int argc, char **argv)
 	data->finished = false;
 	data->dead = false;
 	data->start_time = get_current_time() + (data->philos_num * 20);
-	if (allcate_data(data))
+	if (allocate_data(data))
 		return (1);
-	if (init_mutex(data))
+	if (init_mutexes(data))
 		return (error_free("NULL", data));
 	if (init_philos(data))
 	{

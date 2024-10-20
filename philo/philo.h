@@ -6,14 +6,13 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/12 20:05:25 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/20 18:12:27 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:30:53 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHILO_H
 # define PHILO_H
 
-# include <string.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
@@ -25,14 +24,16 @@
 // enum
 typedef enum e_status
 {
-	GOT_FORK = 0,
-	EATING = 1,
-	SLEEPING = 2,
-	THINKING = 3,
-	DIED = 4
+	GOT_FORK,
+	EATING,
+	SLEEPING,
+	THINKING,
+	DIED
 }			t_status;
 
 // struct
+typedef struct s_philo	t_philo;
+
 typedef struct s_data
 {
 	t_philo				*philos;
@@ -52,14 +53,14 @@ typedef struct s_data
 
 typedef struct s_philo
 {
-	pthread_t		philo;
-	int				id;
-	time_t			last_eat;
-	int				eat_count;
-	pthread_mutex_t	*right_fork;
-	pthread_mutex_t	*left_fork;
-	t_data			*data;
-}					t_philo;
+	pthread_t			philo;
+	int					id;
+	time_t				last_eat;
+	int					eat_count;
+	pthread_mutex_t		*right_fork;
+	pthread_mutex_t		*left_fork;
+	t_data				*data;
+}						t_philo;
 
 // validate
 int		validate(int argc, char **argv);
@@ -71,9 +72,7 @@ int		init_data(t_data *data, int argc, char **argv);
 void	monitor(t_data *data);
 
 // main_philo
-
-
-
+void	philosophers(t_data *data);
 
 // check
 bool	everyone_is_alive(t_data *data);
@@ -86,6 +85,13 @@ void	print_msg(t_philo *philo, t_status status, int current_time);
 void	standby(t_philo *philo);
 void	get_forks(t_philo *philo);
 void	return_forks(t_philo *philo);
+
+// routine
+void	lonely_philo(t_philo *philo);
+void	thinking(t_philo *philo);
+void	sleeping(t_philo *philo);
+void	eating(t_philo *philo);
+void	*routine(void *arg);
 
 // time
 void	start_delay(time_t start_time);

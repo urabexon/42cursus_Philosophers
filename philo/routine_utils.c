@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:01:57 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/20 18:20:17 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:20:48 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	print_msg(t_philo *philo, t_status status, int current_time)
 		else if (status == SLEEPING)
 			printf("%d %d is sleeping\n", timestamp, philo->id);
 		else if (status == THINKING)
+			printf("%d %d is thinking\n", timestamp, philo->id);
+		else if (status == GOT_FORK)
 			printf("%d %d has taken a fork\n", timestamp, philo->id);
 	}
 	pthread_mutex_unlock(&philo->data->write_lock);
@@ -37,8 +39,8 @@ void	standby(t_philo *philo)
 	time_t	left_time;
 	time_t	time_to_standby;
 
-	left_time = philo->data->time_to_die - philo->data->time_to_eat \
-				- philo->data->time_to_sleep;
+	left_time = philo->data->time_to_die - philo->data->time_to_eat
+		- philo->data->time_to_sleep;
 	time_to_standby = (philo->data->time_to_die - philo->data->time_to_eat) / 2;
 	if (time_to_standby > left_time)
 		time_to_standby = left_time;

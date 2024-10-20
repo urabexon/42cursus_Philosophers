@@ -6,7 +6,7 @@
 /*   By: hurabe <hurabe@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/14 22:02:04 by hurabe            #+#    #+#             */
-/*   Updated: 2024/10/16 21:52:33 by hurabe           ###   ########.fr       */
+/*   Updated: 2024/10/20 21:12:49 by hurabe           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,16 @@ int	error_free(char *msg, t_data *data)
 	return (EXIT_FAILURE);
 }
 
-int	error_msg(char *str)
+int	error_msg(char *s)
 {
 	int	len;
 
-	if (str == NULL)
+	if (s == NULL)
 		return (EXIT_FAILURE);
 	len = 0;
-	while (str[len] != '\0')
+	while (s[len] != '\0')
 		len++;
-	write(2, str, len);
+	write(2, s, len);
 	return (EXIT_FAILURE);
 }
 
